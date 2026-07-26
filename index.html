@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ervin Events Styling and Coordination Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<style>
+@keyframes floatImage{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+
+}
+
+.hero-visual{
+
+    animation:floatImage 8s ease-in-out infinite;
+
+}
+.hero-visual::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:14px;
+
+    border:1px solid rgba(255,255,255,.18);
+
+    border-radius:18px;
+
+    pointer-events:none;
+
+}
+  :root{
+    --ink: #241B24;
+    --ink-soft: #35283A;
+    --parchment: #FAF6EF;
+    --card: #F4ECDF;
+    --gold: #B8912E;
+    --gold-soft: #D7B563;
+    --wine: #5B2A4A;
+    --charcoal: #2B2620;
+    --line: rgba(36,27,36,0.1);
+    --max: 1180px;
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
+  body{
+    background:
+linear-gradient(rgba(250,246,239,.97),rgba(250,246,239,.97)),
+url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+
+background-size:cover;
+    color: var(--charcoal);
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.65;
+    overflow-x: hidden;
+    font-size: 16px;
+  }
+  h1,h2,h3,.display{ font-family:'Fraunces', serif; font-weight:500; color:var(--ink); letter-spacing:-0.01em; }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 28px; }
+  @media (min-width:1024px){ .wrap{ padding:0 48px; } }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:.001ms !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
+  }
+
+  .overline{
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 14px;
+  }
+
+  .btn{
+    position:relative;
+    overflow:hidden;
+    display:inline-flex; align-items:center; gap:8px;
+    padding:16px 34px;
+    background: var(--ink);
+    color: var(--parchment) !important;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-radius: 50px;
+    transition: background .25s ease, transform .25s ease;
+    border: 1px solid var(--ink);
+  }
+.btn::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-120%;
+    width:70%;
+    height:100%;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.35),
+            transparent
+        );
+    transition:.7s;
+}
+.btn:hover::before{
+    left:140%;
+}
+
+.btn:hover{
+    background:var(--wine);
+    border-color:var(--wine);
+    transform:translateY(-2px);
+}
+  .btn-ghost{ background: transparent; color: var(--ink) !important; border: 1px solid var(--ink); }
+  .btn-ghost:hover{ background: var(--ink); color: var(--parchment) !important; }
+  .btn-gold{ background: var(--gold); border-color: var(--gold); color: var(--ink) !important; }
+  .btn-gold:hover{ background: var(--gold-soft); border-color: var(--gold-soft); }
+
+  header{
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:999;
+    background:transparent;
+    transition:all .4s ease;
+}
+
+header.scrolled{
+
+    background:rgba(28,20,28,.72);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    box-shadow:
+
+        0 10px 45px rgba(0,0,0,.22);
+
+    border-bottom:
+
+        1px solid rgba(215,181,99,.18);
+
+}
+  .nav{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:24px 28px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    transition:padding .35s ease;
+}
+
+header.scrolled .nav{
+    padding:16px 28px;
+}
+
+@media (min-width:1024px){
+    .nav{
+        padding:24px 48px;
+    }
+
+    header.scrolled .nav{
+        padding:16px 48px;
+    }
+}
+ .wordmark{
+    font-family:'Fraunces',serif;
+    font-size:1.35rem;
+    font-weight:600;
+    color:white;
+    transition:.35s;
+}
+
+.wordmark span{
+    color:var(--gold-soft);
+    font-style:italic;
+}
+
+header.scrolled .wordmark{
+    color:var(--parchment);
+}
+.nav-center{
+    display:none;
+    list-style:none;
+    gap:32px;
+    align-items:center;
+    font-size:.93rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    font-weight:500;
+}
+
+.nav-center a{
+    position:relative;
+    color:white;
+    transition:.35s;
+}
+
+.nav-center a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-8px;
+    width:0;
+    height:2px;
+    background:var(--gold-soft);
+    transition:.35s;
+}
+
+.nav-center a:hover{
+    color:var(--gold-soft);
+}
+
+.nav-center a:hover::after{
+    width:100%;
+}
+
+@media (min-width:900px){
+    .nav-center{
+        display:flex;
+        flex-direction:row;
+    }
+}
+
+.nav-actions{
+    display:flex;
+    align-items:center;
+    gap:16px;
+}
+  .icon-btn{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.25);
+    color:var(--parchment);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1rem;
+    transition:background .25s ease, color .25s ease;
+}
+  .icon-btn:hover{ background:var(--ink); color:var(--parchment); }
+  .nav-cta{ display:none; }
+  @media (min-width:640px){ .nav-cta{ display:inline-flex; } }
+  .hamburger{ display:flex; flex-direction:column; gap:5px; width:26px; cursor:pointer; background:none; border:none; padding:8px; }
+  @media (min-width:900px){ .hamburger{ display:none; } }
+  .hamburger span{ width:100%; height:2px; background:var(--parchment); display:block; transition:.3s; }
+
+  .mobile-menu{
+    position: fixed; inset:0; background:var(--ink); z-index:190;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:30px;
+    transform: translateY(-100%); transition: transform .4s ease;
+  }
+  .mobile-menu.open{ transform: translateY(0); }
+  .mobile-menu a{ color:var(--parchment); font-family:'Fraunces',serif; font-size:1.6rem; }
+  .mobile-menu .close-btn{ position:absolute; top:24px; right:28px; color:var(--parchment); font-size:1.6rem; background:none; border:none; cursor:pointer; }
+
+ .hero{
+    min-height:100vh;
+    padding:140px 0 80px;
+    display:flex;
+    align-items:center;
+    position:relative;
+    background:
+        radial-gradient(circle at 85% 10%, rgba(184,145,46,.16), transparent 45%),
+        radial-gradient(circle at 15% 85%, rgba(91,42,74,.14), transparent 45%),
+        var(--ink);
+    overflow:hidden;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.15),
+            rgba(0,0,0,.20),
+            rgba(0,0,0,.35)
+        );
+    z-index:1;
+  }
+    .hero::after{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+background:
+
+radial-gradient(circle at 20% 20%,rgba(215,181,99,.08),transparent 30%),
+
+radial-gradient(circle at 80% 70%,rgba(255,255,255,.06),transparent 35%);
+
+mix-blend-mode:screen;
+
+animation:heroGlow 12s linear infinite;
+
+}
+
+@keyframes heroGlow{
+
+0%{
+
+transform:translateX(0);
+
+}
+
+50%{
+
+transform:translateX(-30px);
+
+}
+
+100%{
+
+transform:translateX(0);
+
+}
+
+}
+  .hero-grid{ display:grid; grid-template-columns:1fr; gap:44px; position:relative; z-index:2; }
+  @media (min-width:960px){ .hero-grid{ grid-template-columns: 1.1fr 0.9fr; align-items:center; } }
+  .hero h1{ color: var(--parchment); font-size:clamp(3rem,7vw,5.5rem); line-height: 1.05; margin-bottom: 20px; }
+  .hero h1 em{ font-style:italic; color:var(--gold-soft); font-weight:400; }
+  .hero p.lede{
+    color:rgba(250,246,239,.82);
+    max-width:600px;
+    margin-bottom:40px;
+    font-size:1.15rem;
+    line-height:1.9;
+}
+.hero-divider{
+
+display:flex;
+
+align-items:center;
+
+margin:30px 0;
+
+}
+
+.hero-divider::before,
+
+.hero-divider::after{
+
+content:"";
+
+height:1px;
+
+flex:1;
+
+background:rgba(215,181,99,.35);
+
+}
+
+.hero-divider span{
+
+width:14px;
+
+height:14px;
+
+border:2px solid var(--gold-soft);
+
+transform:rotate(45deg);
+
+margin:0 16px;
+
+}  
+.hero-actions{ display:flex; gap:14px; flex-wrap:wrap; }
+  .hero-actions .btn-ghost{ border-color: rgba(250,246,239,0.4); color:var(--parchment) !important; }
+  .hero-actions .btn-ghost:hover{ background:var(--parchment); color:var(--ink) !important; }
+
+  .hero-visual{
+    aspect-ratio: 4/5; border-radius: 20px; position:relative; overflow:hidden;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(215,181,99,0.5), transparent 40%),
+      radial-gradient(circle at 70% 60%, rgba(91,42,74,0.6), transparent 45%),
+      linear-gradient(160deg, #3A2A3D, #241B24 70%);
+  }
+  .hero-visual .badge-float{
+    position:absolute; bottom:20px; left:20px; right:20px;
+    background: rgba(250,246,239,0.94); padding: 18px 20px; border-radius:3px;
+    display:flex; align-items:center; gap:14px;
+  }
+  .badge-seal{
+    width:44px; height:44px; border-radius:50%; background:var(--gold);
+    display:flex; align-items:center; justify-content:center; color:var(--ink);
+    font-family:'Fraunces',serif; font-style:italic; font-size:1.1rem; flex-shrink:0;
+  }
+  .badge-float .t1{ font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold); font-weight:600; }
+  .badge-float .t2{ font-size:0.92rem; color:var(--charcoal); font-weight:500; }
+
+.award-strip{
+    border-top:1px solid rgba(250,246,239,.12);
+    margin-top:60px;
+    padding-top:26px;
+
+    position:relative;
+    z-index:2;
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:28px;
+    align-items:center;
+
+    color:rgba(250,246,239,.6);
+
+    font-size:.82rem;
+
+    letter-spacing:.03em;
+
+}
+.award-strip strong{ color: var(--gold-soft); font-weight:600; }
+
+  section{ padding: 90px 0; }
+  .section-head{ max-width:640px; margin-bottom:52px; }
+  .section-head h2{ font-size: clamp(1.7rem, 3.2vw, 2.4rem); }
+  .section-head p{ margin-top:14px; opacity:0.78; font-size:0.98rem; }
+  .section-split{ display:grid; grid-template-columns:1fr; gap:44px; align-items:center; }
+  @media (min-width:900px){ .section-split{ grid-template-columns:1fr 1fr; gap:64px; } }
+  .section-split.reverse .visual{ order:-1; }
+  @media (min-width:900px){ .section-split.reverse .visual{ order:2; } }
+
+  .visual{ aspect-ratio: 4/3; border-radius:3px; position:relative; overflow:hidden; background-size:cover; transition:.5s; background-position:center; }
+  .visual:hover{ transform:scale(1.03);
+}
+  .v-about{ background-color: #35283A; background-image: linear-gradient(150deg, #6B4360, #241B24 65%); }
+  .v-awards{ background-color: #2E4030; background-image: linear-gradient(150deg, #2E4030, #241B24 65%); }
+  .visual .caption{
+    position:absolute; bottom:18px; left:18px; color:rgba(250,246,239,0.75);
+    font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase;
+    background: rgba(36,27,36,0.55); padding: 5px 10px; border-radius:2px;
+  }
+
+  .pull-quote{
+    font-family:'Fraunces',serif; font-style:italic; color:var(--ink);
+    font-size:1.25rem; line-height:1.55; border-left:2px solid var(--gold);
+    padding-left:20px; margin:24px 0;
+  }
+
+  .service-grid{ display:grid; grid-template-columns:1fr; gap:22px; }
+  @media (min-width:640px){ .service-grid{ grid-template-columns:1fr 1fr; } }
+  @media (min-width:960px){ .service-grid{ grid-template-columns:repeat(3,1fr); } }
+  .service-card{
+    background: var(--card); border:1px solid var(--line); border-radius:3px; padding:28px 24px;
+    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    opacity:0; transform: translateY(16px);
+  }
+  .service-card.visible{ opacity:1; transform:translateY(0); }
+  .service-card:hover{ transform: translateY(-5px); box-shadow: 0 16px 32px rgba(36,27,36,0.1); border-color: rgba(184,145,46,0.4); }
+  .service-icon{
+    width:42px; height:42px; border-radius:50%; background:
+
+linear-gradient(
+
+135deg,
+
+var(--gold),
+
+var(--wine)
+
+); color:var(--gold-soft);
+    display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-style:italic;
+    margin-bottom:16px; font-size:1rem;
+  }
+  .service-card h3{ font-size:1.08rem; margin-bottom:8px; }
+  .service-card p{ font-size:0.9rem; opacity:0.75; }
+
+  .case-row{ display:grid; grid-template-columns:1fr; gap:20px; }
+  @media (min-width:640px){ .case-row{ grid-template-columns:repeat(2,1fr); } }
+  @media (min-width:960px){ .case-row{ grid-template-columns:repeat(4,1fr); } }
+  .case-card{
+    aspect-ratio: 3/4; border-radius:3px; position:relative; overflow:hidden;
+    cursor:pointer;
+    display:flex; align-items:flex-end; padding:20px; color:var(--parchment);
+    background-size:cover; background-position:center;
+  }
+  .case-card::after{ content:''; position:absolute; inset:0; background:linear-gradient(0deg, rgba(0,0,0,0.6), transparent 55%); }
+  .case-card::before{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+background:
+
+linear-gradient(
+
+180deg,
+
+transparent,
+
+rgba(0,0,0,.18)
+
+);
+
+opacity:0;
+
+transition:.35s;
+
+z-index:1;
+
+}
+
+.case-card:hover::before{
+
+opacity:1;
+
+}
+
+.case-card:hover{
+
+transform:scale(1.02);
+
+transition:.35s;
+
+}
+  .case-card .tag{ position:relative; z-index:2; font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; opacity:0.85; }
+  .case-card h4{ position:relative; z-index:2; font-family:'Fraunces',serif; font-size:1.2rem; font-weight:500; }
+  .c1{ background-color:#7C6B3E; background-image: linear-gradient(160deg, #7C6B3E, #241B24); }
+  .c2{ background-color:#5B2A4A; background-image: linear-gradient(160deg, #5B2A4A, #241B24); }
+  .c3{ background-color:#3E4A5C; background-image: linear-gradient(160deg, #3E4A5C, #241B24); }
+  .c4{ background-color:#6B4360; background-image: linear-gradient(160deg, #6B4360, #2E4030); }
+
+  .testimonial-block{ background: var(--ink); border-radius:4px; padding:64px 36px; text-align:center; }
+  .testimonial-block .badge-seal{ margin:0 auto 22px; }
+  .testimonial-block p{
+    font-family:'Fraunces',serif; font-style:italic; color:var(--parchment);
+    font-size: clamp(1.1rem, 2.2vw, 1.5rem); max-width:620px; margin:0 auto 18px; line-height:1.55;
+  }
+  .testimonial-block .who{ color: var(--gold-soft); font-size:0.82rem; letter-spacing:0.06em; text-transform:uppercase; }
+
+  .contact-shell{ background: var(--card); border-radius:4px; padding:52px 32px; }
+  @media (min-width:768px){ .contact-shell{ padding:64px 56px; } }
+  .contact-grid{ display:grid; grid-template-columns:1fr; gap:40px; }
+  @media (min-width:880px){ .contact-grid{ grid-template-columns:1.1fr 0.9fr; gap:60px; } }
+  .field{ margin-bottom:18px; }
+  .field label{ display:block; font-size:0.76rem; letter-spacing:0.07em; text-transform:uppercase; color:var(--gold); margin-bottom:7px; }
+  .field input, .field select, .field textarea{
+    width:100%; padding:13px 14px; border:1px solid var(--line); background:var(--parchment);
+    border-radius:2px; font-family:'Work Sans',sans-serif; font-size:0.95rem; color:var(--charcoal);
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{ outline:2px solid var(--gold); outline-offset:1px; }
+  .contact-info{ display:flex; flex-direction:column; gap:20px; }
+  .contact-info .item{ display:flex; gap:14px; align-items:flex-start; }
+  .contact-info .dot{ width:7px; height:7px; border-radius:50%; background:var(--gold); margin-top:8px; flex-shrink:0; }
+  .contact-info h4{ font-size:0.98rem; margin-bottom:3px; font-family:'Work Sans'; font-weight:600; }
+  .contact-info p, .contact-info a{ font-size:0.9rem; opacity:0.78; }
+  .cta-pair{ display:flex; flex-direction:column; gap:12px; margin-top:22px; }
+  @media (min-width:480px){ .cta-pair{ flex-direction:row; } }
+
+  footer{ background: var(--ink); color: rgba(250,246,239,0.6); padding: 60px 0 26px; }
+  .footer-grid{ display:grid; grid-template-columns:1fr; gap:36px; margin-bottom:40px; }
+  @media (min-width:640px){ .footer-grid{ grid-template-columns:1.3fr 1fr 1fr 1fr; } }
+  .footer-grid h5{ color:var(--gold-soft); font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:16px; }
+  .footer-grid ul{ list-style:none; display:flex; flex-direction:column; gap:10px; font-size:0.88rem; }
+  .footer-wordmark{ font-family:'Fraunces',serif; font-size:1.3rem; color:var(--parchment); margin-bottom:12px; }
+  .footer-grid p{ font-size:0.88rem; line-height:1.7; }
+  .social-row{ display:flex; gap:12px; margin-top:16px; }
+  .social-row a{
+    width:36px; height:36px; border-radius:50%; border:1px solid rgba(250,246,239,0.25);
+    display:flex; align-items:center; justify-content:center; font-size:0.76rem;
+    transition: background .25s ease;
+  }
+  .social-row a:hover{ background: rgba(250,246,239,0.15); }
+  .footer-bottom{
+    border-top:1px solid rgba(250,246,239,0.12); padding-top:22px;
+    display:flex; flex-direction:column; gap:10px; font-size:0.8rem;
+  }
+  @media (min-width:640px){ .footer-bottom{ flex-direction:row; justify-content:space-between; } }
+
+  .reveal{ opacity:0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible{ opacity:1; transform:translateY(0); }
+
+.scroll-indicator{
+    position:absolute;
+    bottom:35px;
+    left:50%;
+    transform:translateX(-50%);
+    width:28px;
+    height:48px;
+    border:2px solid rgba(255,255,255,.45);
+    border-radius:50px;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    padding-top:8px;
+    z-index:5;
+}
+
+.scroll-indicator span{
+    width:5px;
+    height:10px;
+    border-radius:50px;
+    background:var(--gold-soft);
+    animation:scrollDown 2s infinite;
+}
+
+@keyframes scrollDown{
+    0%{
+        opacity:0;
+        transform:translateY(0);
+    }
+    40%{
+        opacity:1;
+    }
+    100%{
+        opacity:0;
+        transform:translateY(16px);
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- ======================================================================
+     EDIT EVERYTHING HERE — this is the only section you should need to touch.
+     Change the file paths and text below, save, and refresh the page.
+     Leave everything AFTER this script block alone.
+====================================================================== -->
+<script>
+const CONFIG = {
+
+  // ---- IMAGES ----
+  // Put your image files in the same folder as this HTML file (e.g. a "PICS" folder next to it),
+  // then just type the path here, like "PICS/PROFILE.jpg".
+  // Leave a value as "" (empty quotes) to keep the placeholder color background instead.
+  images: {
+    hero:   "PICS/Ervin.jpg",
+    about:  "PICS/PROFILE.jpg",
+    awards: "PICS/PLAQUE.jpg",
+
+    // Portfolio row — exactly 4 cards. Each needs an image path, a small tag label, and a title.
+    portfolio: [
+      { src: "PICS/AN.jpg",       tag: "Awards Night", title: "2nd International Awards" },
+      { src: "PICS/INV.jpg",      tag: "Invitation",   title: "Sample Invite Suite"       },
+      { src: "PICS/TOP LIST.jpg", tag: "Recognition",  title: "Top 10 — Region 8"         },
+      { src: "",                  tag: "Wedding",       title: "Church Ceremony"           }
+    ]
+  },
+
+  // ---- TEXT & DETAILS ----
+  text: {
+    businessName:   "Ervin Events",
+    heroLede:       "Ervin Events Styling and Coordination Services creates unforgettable weddings, debuts, and celebrations across Samar and beyond — from first concept to the final light cue.",
+    aboutHeading:   "The creative behind the celebrations.",
+    aboutQuote:     "We carry the pressure of every event — the planning, the sleepless nights — just to make our clients' big day truly memorable.",
+    aboutBody:      "Led by Ervin Casaljay, Ervin Events Styling and Coordination Services designs and runs weddings, debuts, birthdays, and corporate events across Samar — handling styling, floral design, draping, lighting, and full day-of coordination so every celebration feels effortless.",
+    awardsHeading:  "Award-winning styling, rooted in Samar.",
+    awardsBody1:    "In January 2026, Ervin Events was honored at the 2nd International Awards Night by the Wedding Suppliers Association of the Philippines (WSAP) — named among the Top 10 Wedding Planners and Event Stylists in Region 8, and awarded the Seal of Excellence at both the Regional and National level.",
+    awardsBody2:    "It's recognition for the sleepless nights and the detail work that goes into every single event — and a promise to every future client that the same care goes into theirs.",
+    testimonial:    "Ervin's team turned our reception into something out of a magazine — chandeliers, lights, florals, all of it — and we didn't lift a finger on the day itself.",
+    testimonialWho: "A Recent Client"
+  },
+
+  // ---- CONTACT DETAILS ----
+  // whatsappNumber must be digits only, country code first, no + or spaces (used to build the chat link).
+  contact: {
+    email: "ervincasaljay0@gmail.com",
+    whatsappDisplay: "+63 985 618 9542",
+    whatsappNumber: "639856189542",
+    address: "Gandara, Samar, Philippines"
+  }
+};
+</script>
+<!-- ====================== END OF EDITABLE SECTION ====================== -->
+
+<header>
+  <nav class="nav">
+    <div class="wordmark" data-bind="businessName-wordmark">Ervin <span>Events</span></div>
+    <ul class="nav-center">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      
+      <a href="#" data-bind="whatsapp-href" class="icon-btn" aria-label="WhatsApp" target="_blank" rel="noopener">
+    <i class="fa-brands fa-whatsapp"></i>
+</a>
+      <a href="#contact" class="btn nav-cta">Inquire</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close-btn" id="closeMenuBtn" aria-label="Close menu">&times;</button>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#portfolio">Portfolio</a>
+  <a href="#awards">Awards</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="overline" style="color:var(--gold-soft);">Event Stylist · Wedding Coordinator · Samar, Philippines</span>
+        <h1>Designing experiences.<br><em>Styling</em> moments.</h1>
+        <div class="hero-divider">
+    <span></span>
+</div>
+        <p class="lede" data-bind="heroLede"></p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-gold">Start an Inquiry</a>
+          <a href="#portfolio" class="btn btn-ghost">View Our Work</a>
+        </div>
+      </div>
+      <div class="hero-visual" data-img="hero">
+        <div class="badge-float">
+          <div class="badge-seal">E</div>
+          <div>
+            <div class="t1">Recognized By WSAP</div>
+            <div class="t2">Seal of Excellence Awardee</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="award-strip"> 
+      
+      <span><strong>Top 10</strong> Wedding Planner &amp; Event Stylist — Region 8</span>
+      <span><strong>Seal of Excellence</strong> — Regional &amp; National Awards, WSAP 2026</span>
+      <span>Featured — <strong>2nd International Awards Night</strong>, Newport World Resorts</span>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span></span>
+</div>
+</section>
+
+<section id="about">
+  <div class="wrap section-split reveal">
+    <div class="visual v-about" data-img="about"><span class="caption">Ervin Casaljay</span></div>
+    <div>
+      <span class="overline">About Ervin Events</span>
+      <h2 data-bind="aboutHeading"></h2>
+      <p class="pull-quote" data-bind="aboutQuote"></p>
+      <p data-bind="aboutBody"></p>
+    </div>
+  </div>
+</section>
+
+<section id="services" style="background:var(--card);">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="overline">Services</span>
+      <h2>Built around your celebration</h2>
+      <p>From concept to closeout, every service is tailored to the event you're planning.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card"><div class="service-icon">S</div><h3>Full Event Styling</h3><p>Concept, palette, florals, drapery, and lighting design tailored to your theme.</p></div>
+      <div class="service-card"><div class="service-icon">C</div><h3>Wedding Coordination</h3><p>Day-of and month-of coordination so you can enjoy your own celebration.</p></div>
+      <div class="service-card"><div class="service-icon">F</div><h3>Floral &amp; Tablescape</h3><p>Centerpieces, arches, and table styling designed around your color story.</p></div>
+      <div class="service-card"><div class="service-icon">L</div><h3>Lighting &amp; Draping</h3><p>Chandeliers, uplighting, and fabric draping that transform any venue.</p></div>
+      <div class="service-card"><div class="service-icon">V</div><h3>Vendor Management</h3><p>Sourcing and coordinating caterers, photographers, and suppliers for you.</p></div>
+      <div class="service-card"><div class="service-icon">D</div><h3>Debuts &amp; Milestones</h3><p>Bespoke themes for 18th birthdays, anniversaries, and family celebrations.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="overline">Portfolio</span>
+      <h2>A few celebrations we've styled</h2>
+    </div>
+    <div class="case-row reveal">
+      <div class="case-card c1" data-img="case1"><div><span class="tag"></span><h4></h4></div></div>
+      <div class="case-card c2" data-img="case2"><div><span class="tag"></span><h4></h4></div></div>
+      <div class="case-card c3" data-img="case3"><div><span class="tag"></span><h4></h4></div></div>
+      <div class="case-card c4" data-img="case4"><div><span class="tag"></span><h4></h4></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="awards" style="background:var(--card);">
+  <div class="wrap section-split reverse reveal">
+    <div class="visual v-awards" data-img="awards"><span class="caption">WSAP · Seal of Excellence</span></div>
+    <div>
+      <span class="overline">Recognition</span>
+      <h2 data-bind="awardsHeading"></h2>
+      <p data-bind="awardsBody1"></p>
+      <p style="margin-top:14px;" data-bind="awardsBody2"></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap reveal">
+    <div class="testimonial-block">
+      <div class="badge-seal">"</div>
+      <p data-bind="testimonial"></p>
+      <div class="who">— <span data-bind="testimonialWho"></span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="overline">Contact</span>
+      <h2>Let's start planning your event</h2>
+    </div>
+    <div class="contact-shell reveal">
+      <div class="contact-grid">
+        <form onsubmit="event.preventDefault(); alert('This is a sample form for demonstration — form submissions aren\'t connected yet.');">
+          <div class="field">
+            <label for="name">Full Name</label>
+            <input id="name" type="text" placeholder="Juan Dela Cruz" required>
+          </div>
+          <div class="field">
+            <label for="eventType">Event Type</label>
+            <select id="eventType">
+              <option>Wedding</option>
+              <option>Debut</option>
+              <option>Birthday</option>
+              <option>Corporate Event</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="eventDate">Preferred Event Date</label>
+            <input id="eventDate" type="date">
+          </div>
+          <div class="field">
+            <label for="message">Tell us about your event</label>
+            <textarea id="message" rows="4" placeholder="Guest count, venue, style you have in mind..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-gold">Send Inquiry</button>
+        </form>
+        <div class="contact-info">
+          <div class="item"><span class="dot"></span><div><h4>Location</h4><p data-bind="address"></p></div></div>
+          <div class="item"><span class="dot"></span><div><h4>Email</h4><p><a href="#" data-bind="email-href"><span data-bind="email-text"></span></a></p></div></div>
+          <div class="item"><span class="dot"></span><div><h4>WhatsApp</h4><p><a href="#" data-bind="whatsapp-href2"><span data-bind="whatsapp-text"></span></a></p></div></div>
+          <div class="item"><span class="dot"></span><div><h4>Response Time</h4><p>We reply to inquiries within 24 hours</p></div></div>
+          <div class="cta-pair">
+            <a href="#" data-bind="whatsapp-href3" class="btn btn-ghost" target="_blank" rel="noopener">Message on WhatsApp</a>
+            <a href="#" data-bind="email-href2" class="btn btn-ghost">Email Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-wordmark" data-bind="businessName-footer">Ervin Events</div>
+        <p>Event Stylist, Wedding Coordinator, and Wedding Planner based in <span data-bind="address-inline"></span>.</p>
+        <div class="social-row">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">ig</a>
+          <a href="#" data-bind="whatsapp-href4" aria-label="WhatsApp" target="_blank" rel="noopener">w</a>
+        </div>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#services">Event Styling</a></li>
+          <li><a href="#services">Wedding Coordination</a></li>
+          <li><a href="#services">Floral &amp; Tablescape</a></li>
+          <li><a href="#services">Lighting &amp; Draping</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Studio</h5>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#awards">Awards</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="#" data-bind="email-href3"><span data-bind="email-text2"></span></a></li>
+          <li><a href="#" data-bind="whatsapp-href5"><span data-bind="whatsapp-text2"></span></a></li>
+          <li data-bind="address2"></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 <span data-bind="businessName-copyright">Ervin Events</span> Styling and Coordination Services.</span>
+      <span>Sample site mockup — design concept, not yet live.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---- Applies everything from CONFIG above onto the page. No need to edit below this line. ----
+  function applyConfig(){
+    // Images: hero / about / awards
+    ['hero','about','awards'].forEach(key => {
+      const el = document.querySelector(`[data-img="${key}"]`);
+      const src = CONFIG.images[key];
+      if(el && src){
+        el.style.backgroundImage = `url('${src}')`;
+        el.style.backgroundSize = 'cover';
+        el.style.backgroundPosition = 'center';
+      }
+    });
+
+    // Portfolio cards
+    CONFIG.images.portfolio.forEach((item, i) => {
+      const card = document.querySelector(`[data-img="case${i+1}"]`);
+      if(!card) return;
+      if(item.src){
+        card.style.backgroundImage = `url('${item.src}')`;
+        card.style.backgroundSize = 'cover';
+        card.style.backgroundPosition = 'center';
+      }
+      const tagEl = card.querySelector('.tag');
+      const titleEl = card.querySelector('h4');
+      if(tagEl) tagEl.textContent = item.tag;
+      if(titleEl) titleEl.textContent = item.title;
+    });
+
+    // Text fields
+    document.querySelectorAll('[data-bind]').forEach(el => {
+      const key = el.dataset.bind;
+      if(CONFIG.text[key] !== undefined){ el.textContent = CONFIG.text[key]; }
+    });
+
+    // Business name (appears twice)
+    document.querySelectorAll('[data-bind="businessName-wordmark"]').forEach(el => {
+      el.innerHTML = CONFIG.text.businessName.replace(/(\s\S+)$/, ' <span>$1</span>').trim();
+    });
+    document.querySelectorAll('[data-bind="businessName-footer"], [data-bind="businessName-copyright"]').forEach(el => {
+      el.textContent = CONFIG.text.businessName;
+    });
+
+    // Contact fields (repeated across sections)
+    const c = CONFIG.contact;
+    const waLink = `https://wa.me/${c.whatsappNumber}`;
+    document.querySelectorAll('[data-bind^="whatsapp-href"]').forEach(el => el.href = waLink);
+    document.querySelectorAll('[data-bind^="whatsapp-text"]').forEach(el => el.textContent = c.whatsappDisplay);
+    document.querySelectorAll('[data-bind^="email-href"]').forEach(el => el.href = `mailto:${c.email}`);
+    document.querySelectorAll('[data-bind^="email-text"]').forEach(el => el.textContent = c.email);
+    document.querySelectorAll('[data-bind^="address"]').forEach(el => el.textContent = c.address);
+  }
+  applyConfig();
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal, .service-card').forEach(el => observer.observe(el));
+
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const closeMenuBtn = document.getElementById('closeMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburgerBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+  closeMenuBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+window.addEventListener("scroll", function () {
+
+    const header = document.querySelector("header");
+
+    if(window.scrollY > 50){
+
+        header.classList.add("scrolled");
+
+    }else{
+
+        header.classList.remove("scrolled");
+
+    }
+
+});
+</script>
+
+</body>
+</html>
